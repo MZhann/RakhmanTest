@@ -32,7 +32,7 @@ const Choose = () => {
     };
 
     const generateText = async () => {
-        // let text = 'generate me recipe with there ingredients:' + gptPromptText.toString();
+        let text = 'generate me recipe with there ingredients:' + gptPromptText.toString();
         console.log('started generation of text...');
 
         try{
