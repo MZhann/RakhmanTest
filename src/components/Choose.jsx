@@ -32,7 +32,7 @@ const Choose = () => {
     };
 
     const generateText = async () => {
-        let text = 'generate me schedule for training for a week.';
+        // let text = 'generate me recipe with there ingredients:' + gptPromptText.toString();
         console.log('started generation of text...');
 
         try{
@@ -50,13 +50,15 @@ const Choose = () => {
             const data = await response.json();
             console.log('data: ', data);
             setGeneratedText(data.choices[0].text);
+
+            await generateImage(createPromptText());
         }catch(error){
             console.error(error);
         }
     }
 
     const generateImage = async (promtText) => {
-        console.log('generate image')
+        console.log('generating image...')
         const options = {
             method: "POST",
             headers: {
@@ -108,13 +110,13 @@ const Choose = () => {
                     Generate Dish
                 </button>
             </div>
-            <div className="flex w-full">
-                <p className="text-green-400 text-xl">infoFromOptions: {infoFromOptions}</p>
+            <div className="flex w-full flex-col items-center xl:flex-row">
+                {/* <p className="text-green-400 text-xl">infoFromOptions: {infoFromOptions}</p> */}
                 <Options setInfoFromOptions={setInfoFromOptions} />
-                <div>
+                {/* <div>
                     generated text: 
                     {generatedText}
-                </div>
+                </div> */}
                 <div>
                     <p>Generated image will be here:</p>
                     <img src={imageUrl} width={200} height={200} className="bg-emerald-200 rounded-2xl border-2 border-black w-[300px] h-[300px] mr-10 mb-10" alt="generated image will be pasted here" />

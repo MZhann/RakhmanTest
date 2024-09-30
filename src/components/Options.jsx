@@ -17,11 +17,11 @@ const Options = ({setInfoFromOptions}) => {
     }, [dishType, typeOfFood, cuisine, fastFoodType, banIngredients, bonusIngredients])
 
     return (
-        <div className="mx-auto p-4 mt-4 bg-emerald-100 w-[70%] mb-10 border-2 border-black h-[400px] rounded-3xl flex flex-col items-center">
+        <div className="mx-auto p-4 mt-4 bg-emerald-100 w-[90%] xl:w-[70%] mb-10 border-2 border-black  rounded-3xl flex flex-col items-center">
             <div className="text-3xl font-bold">Options</div>
             <p>Lorem, ipsum dolor.</p>
 
-            <div className="flex gap-10 mt-10">
+            <div className="flex gap-10 mt-10 flex-wrap">
                 <div>
                     <div className="flex flex-col">
                         <label>Select dish you want to cook</label>
