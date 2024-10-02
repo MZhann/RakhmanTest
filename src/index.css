@@ -3,12 +3,26 @@
 @tailwind utilities;
 
 
+@font-face {
+  font-family: "dinround";
+  src: url("/fonts/DINRoundPro.woff2") format("woff2"),
+      url("/fonts/DINRoundPro.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 body{
   width: 100%;
   min-height: 100vh;
   /* background-color: yellow; */
   padding: 0;
   margin: 0
+}
+
+
+.dinround{
+  font-family: "dinround", sans-serif;
 }
 
 

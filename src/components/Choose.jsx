@@ -12,7 +12,7 @@ const Choose = () => {
 
     const [imageUrl, setImageUrl] = useState('');
 
-    
+    const [isLoading, setIsLoading] = useState(false);
 
     const ingredientsData = [
         { name: "Meat", imageSrc: "/images/meat.png" },
@@ -32,6 +32,7 @@ const Choose = () => {
     };
 
     const generateText = async () => {
+        setIsLoading(true);
         let text = 'generate me recipe with there ingredients:' + gptPromptText.toString();
         console.log('started generation of text...');
 
@@ -52,6 +53,8 @@ const Choose = () => {
             setGeneratedText(data.choices[0].text);
 
             await generateImage(createPromptText());
+
+            setIsLoading(false);
         }catch(error){
             console.error(error);
         }
@@ -106,8 +109,12 @@ const Choose = () => {
                 <button
                     onClick={() => generateText()}
                     className="px-4 h-[50px] m-4 rounded-2xl bg-indigo-400"
+                    disabled = {isLoading}
                 >
-                    Generate Dish
+
+                    {isLoading ? <div>loading ... </div> : <div>generate dish</div>}
+
+                    
                 </button>
             </div>
             <div className="flex w-full flex-col items-center xl:flex-row">
@@ -117,6 +124,8 @@ const Choose = () => {
                     generated text: 
                     {generatedText}
                 </div> */}
+
+
                 <div>
                     <p>Generated image will be here:</p>
                     <img src={imageUrl} width={200} height={200} className="bg-emerald-200 rounded-2xl border-2 border-black w-[300px] h-[300px] mr-10 mb-10" alt="generated image will be pasted here" />
@@ -124,6 +133,7 @@ const Choose = () => {
 
 
             </div>
+            <p>generated text: {generatedText}</p>
         </div>
     );
 };
